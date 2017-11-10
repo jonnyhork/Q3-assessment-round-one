@@ -9,6 +9,8 @@ class ToolBar extends Component {
     }
   }
   
+  
+  
   onSearchInputChange(searchTerm) {
     this.setState({
       searchTerm
@@ -20,7 +22,9 @@ class ToolBar extends Component {
     return (
     <div className="row">
       <div className="col-md-6">
-        the search term is: {this.state.searchTerm}
+      <p>
+        Total Messages:<span className="badge badge-pill badge-light">{this.props.messages.length}</span>
+      </p>
         <div className="input-group p-3">
           <input type="text" className="form-control" placeholder="Search" aria-label="Search for a name or message"
           value={this.state.searchTerm}

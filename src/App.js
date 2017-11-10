@@ -36,7 +36,7 @@ class App extends Component {
   
   messageSearch(searchTerm) {
     const filteredMessages = this.state.messages.filter( message => {
-       return (message.name.match(new RegExp(searchTerm, "ig")) || message.message.match(new RegExp(searchTerm, "ig")))
+       return ( message.name.match(new RegExp(searchTerm, "ig")) || message.message.match(new RegExp(searchTerm, "ig")) )
     })
     // console.log("filtered Messages:", filteredMessages)
     this.setState({
@@ -52,13 +52,14 @@ class App extends Component {
       <div className="container">
         <h2>Message Board</h2>
         <ToolBar 
-          toggleCompose={this.toggleCompose.bind(this)}
+          messages={ this.state.filteredMessages ? this.state.filteredMessages : this.state.messages }
+          toggleCompose={ this.toggleCompose.bind(this) }
           onMessageSearch={ this.messageSearch.bind(this) }
         />
         {
           this.state.composing ? <AddMessage /> : null
         }
-        <MessageList messages={this.state.filteredMessages ? this.state.filteredMessages : this.state.messages}/>
+        <MessageList messages={ this.state.filteredMessages ? this.state.filteredMessages : this.state.messages }/>
       </div>
     );
   }

@@ -13,7 +13,7 @@ class ToolBar extends Component {
     this.setState({
       searchTerm
     })
-    // this.props.searchbar term function to actually search
+    this.props.onMessageSearch(searchTerm)
   }
   
   render() {
@@ -25,7 +25,7 @@ class ToolBar extends Component {
           <input type="text" className="form-control" placeholder="Search" aria-label="Search for a name or message"
           value={this.state.searchTerm}
           onChange= {
-            (e) => this.onSearchInputChange((e.target.value))
+            (e) => this.onSearchInputChange(e.target.value)
           }
           />
           <span>

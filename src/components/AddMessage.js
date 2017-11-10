@@ -1,8 +1,23 @@
 import React from 'react'
 
-const AddMessage = () => {
+const AddMessage = ({ sendMessage }) => {
+  
+  const submitMessage = (e) => {
+    e.preventDefault()
+    // console.log("submit message is called")
+    // console.log("body of the message is:", {
+    //   name: e.target.name.value,
+    //   message: e.target.message.value
+    // })
+    // 
+    sendMessage({
+      name: e.target.name.value,
+      message: e.target.message.value
+    })
+  }
+  
   return (
-    <form>
+    <form onSubmit={ submitMessage }>
       <div className="form-row p-3">
         <div className="col">
           <input type="text" name="name" className="form-control" id="newMessageName" placeholder="name"/>

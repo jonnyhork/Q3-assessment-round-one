@@ -30,6 +30,25 @@ class App extends Component {
     return json
   }
   
+  async sendMessage(message) {
+    
+    const response = await fetch(`${API}/messages`,{
+      method: 'POST',
+      body: JSON.stringify(message),
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      }
+    })
+    
+    const newMessage = await response.json()
+    
+    this.setState({
+      messages: [...this.state.messages, newMessage],
+      composing: false
+    })
+  }
+  
   toggleCompose() {
     this.setState({ composing: !this.state.composing })
   }
@@ -57,7 +76,7 @@ class App extends Component {
           onMessageSearch={ this.messageSearch.bind(this) }
         />
         {
-          this.state.composing ? <AddMessage /> : null
+          this.state.composing ? <AddMessage sendMessage={this.sendMessage.bind(this)} /> : null
         }
         <MessageList messages={ this.state.filteredMessages ? this.state.filteredMessages : this.state.messages }/>
       </div>

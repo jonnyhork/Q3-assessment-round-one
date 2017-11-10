@@ -3,11 +3,7 @@ import Message from './Message'
 
 
 const MessageList = ({ messages }) => {
-  
-
   return (
-    
-    
     <ul className="list-group">
       {messages.map( message => <Message key={message.id} message={message} />)}
     </ul>

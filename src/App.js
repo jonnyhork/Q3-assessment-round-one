@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import ToolBar from './components/ToolBar'
 import MessageList from './components/MessageList'
+import AddMessage from './components/AddMessage'
 
 
 const API = process.env.REACT_APP_API_URL
@@ -27,6 +28,11 @@ class App extends Component {
     const json = await response.json()
     return json
   }
+  
+  toggleCompose() {
+    this.setState({ composing: !this.state.composing })
+  }
+  
 
   
   
@@ -34,7 +40,10 @@ class App extends Component {
     return (
       <div className="container">
         <h2>Message Board</h2>
-        <ToolBar />
+        <ToolBar toggleCompose={this.toggleCompose.bind(this)}/>
+        {
+          this.state.composing ? <AddMessage /> : null
+        }
         <MessageList messages={this.state.messages}/>
       </div>
     );

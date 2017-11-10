@@ -9,8 +9,6 @@ class ToolBar extends Component {
     }
   }
   
-  
-  
   onSearchInputChange(searchTerm) {
     this.setState({
       searchTerm

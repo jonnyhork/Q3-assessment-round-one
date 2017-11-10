@@ -4,9 +4,7 @@ import ToolBar from './components/ToolBar'
 import MessageList from './components/MessageList'
 import AddMessage from './components/AddMessage'
 
-
 const API = process.env.REACT_APP_API_URL
-
 
 class App extends Component {
   
@@ -49,6 +47,22 @@ class App extends Component {
     })
   }
   
+  async deleteMessage(id) {
+    console.log("deleteMessage with id:", id)
+    
+    await fetch(`${API}/messages/${id}`,{
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      }
+    })
+    
+    this.setState({
+      messages: this.state.messages.filter( message => message.id !== id)
+    })
+  }
+  
   toggleCompose() {
     this.setState({ composing: !this.state.composing })
   }
@@ -64,8 +78,6 @@ class App extends Component {
     // console.log("STATE OF FILTERED MESSAGES:", this.state.filteredMessages)
   }
 
-  
-  
   render() {
     return (
       <div className="container">
@@ -78,7 +90,9 @@ class App extends Component {
         {
           this.state.composing ? <AddMessage sendMessage={this.sendMessage.bind(this)} /> : null
         }
-        <MessageList messages={ this.state.filteredMessages ? this.state.filteredMessages : this.state.messages }/>
+        <MessageList 
+        deleteMessage={this.deleteMessage.bind(this)}
+        messages={ this.state.filteredMessages ? this.state.filteredMessages : this.state.messages }/>
       </div>
     );
   }

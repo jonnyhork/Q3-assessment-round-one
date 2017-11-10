@@ -4,12 +4,7 @@ const AddMessage = ({ sendMessage }) => {
   
   const submitMessage = (e) => {
     e.preventDefault()
-    // console.log("submit message is called")
-    // console.log("body of the message is:", {
-    //   name: e.target.name.value,
-    //   message: e.target.message.value
-    // })
-    // 
+    
     sendMessage({
       name: e.target.name.value,
       message: e.target.message.value

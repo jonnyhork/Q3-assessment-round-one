@@ -2,4 +2,9 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  background-color: rgba(137, 212, 223, 0.94)
+}
+
+.encrypted {
+  font-family: wingdings
 }

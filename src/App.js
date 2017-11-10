@@ -81,7 +81,7 @@ class App extends Component {
   render() {
     return (
       <div className="container">
-        <h2>Message Board</h2>
+        <h2 className="mt-2 display-1">Message Board</h2>
         <ToolBar 
           messages={ this.state.filteredMessages ? this.state.filteredMessages : this.state.messages }
           toggleCompose={ this.toggleCompose.bind(this) }

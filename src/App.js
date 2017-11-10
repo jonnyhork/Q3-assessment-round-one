@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
-import logo from '../logo.svg';
-import '../App.css';
+import logo from './logo.svg';
+import './App.css';
+import ToolBar from './components/ToolBar'
+import MessageList from './components/MessageList'
+
+
+
 
 class App extends Component {
   
@@ -13,11 +18,15 @@ class App extends Component {
   
   // get messages method
     // ${REACT_APP_API_URL}/messages
-  
+
   
   render() {
     return (
-      <h3>Jonny</h3>
+      <div className="container">
+        <h2>Message Board</h2>
+        <ToolBar />
+        <MessageList />
+      </div>
     );
   }
 }
